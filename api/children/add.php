@@ -1,6 +1,6 @@
 <?php
-$link=mysqli_connect("localhost", "root","","dobrodetyam") or die("Не удапось подключится к БД");
-$secondName = $_POST['secondname'];
+require_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
+$link=mysqli_connect(HOST, USER,PASSWORD,DBNAME) or die("Не удапось подключится к БД");$secondName = $_POST['secondname'];
 $firstName = $_POST['firstname'];
 $patronic = $_POST['patronic'];
 $birthday=$_POST['birthday'];

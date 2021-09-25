@@ -1,5 +1,6 @@
 <?php
-$link=mysqli_connect("localhost", "root","","dobrodetyam") or die("Не удапось подключится к БД");
+require_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
+$link=mysqli_connect(HOST, USER,PASSWORD,DBNAME) or die("Не удапось подключится к БД");
 $name = $_POST['name'];
 $description=$_POST['description'];
 $address=$_POST['address'];
