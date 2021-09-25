@@ -100,5 +100,50 @@
         </textarea>
 
     </div>
+
+    <div class="container" style="background: aliceblue; padding: 30px; margin: 30px;">
+        <span class="badge badge-primary" style="font-size: xx-large">Получение данных о ребенке по ID</span>
+        <p>
+            URL метода API:
+            <a href="http://f0578562.xsph.ru/api/children/get.php?id=1">
+                http://f0578562.xsph.ru/api/event/get.php?id=15
+            </a>
+        </p>
+        <p>
+            Данный метод возвращет данные воспитанника в формате JSON
+        </p>
+        <p>
+            Поля JSON:
+        <ul>
+            <li>
+                name - Имя
+            </li>
+            <li>
+                secondname - Фамилия
+            </li>
+            <li>
+                patronic - Отчество
+            </li>
+            <li>
+                birthday - Дата рождения ГГГГ-ММ-ДД
+            </li>
+            <li>
+                age - Возраст
+            </li>
+
+        </ul>
+        </p>
+
+        <form method="post" id="childid">
+            ID ребенка: <input id="inputidchild" name="id" type="number" min="1" max="3" value="2">
+        </form>
+        <button type="button" class="btn btn-primary" onclick="$.get('/api/children/get.php', 'id='+document.getElementById('inputidchild').value ,function (data){
+            document.getElementById('childbyid') .innerHTML=data;
+        }); return false;">Получить данные о ребенке</button>
+        <span class="badge badge-secondary" style="font-size: large; width: 900px;">Результат вывода</span>
+        <textarea class="row" id="childbyid" style="width:900px; height: 200px;">
+        </textarea>
+
+    </div>
 </body>
 </html>
