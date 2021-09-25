@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
     <div class="container" style="background: aliceblue; padding: 30px; margin: 30px;">
@@ -145,5 +150,61 @@
         </textarea>
 
     </div>
+
+    <div class="container" style="background: aliceblue; padding: 30px; margin: 30px;">
+        <span class="badge badge-primary" style="font-size: xx-large">Добавление ребенка в БД</span>
+        <p>
+            URL метода API:
+            <a href="http://f0578562.xsph.ru/api/children/add.php">
+                http://f0578562.xsph.ru/api/event/add.php
+            </a>
+        </p>
+        <p>
+            Данный метод добавляет ребенка в БД и возвращает его ID
+        </p>
+        <p>
+            Поля:
+        <ul>
+            <li>
+                name - Имя
+            </li>
+            <li>
+                secondname - Фамилия
+            </li>
+            <li>
+                patronic - Отчество
+            </li>
+            <li>
+                birthday - Дата рождения ГГГГ-ММ-ДД
+            </li>
+
+
+        </ul>
+        </p>
+
+        <form method="post" id="childinfo">
+            Фамилия: <input type="text" name="secondname"><br>
+            Имя: <input type="text" name="firstname"><br>
+            Отчество: <input type="text" name="patronic"><br>
+            Дата рождения (ГГГГ-ММ-ДД): <input id="birthday_input" type="text" name="birthday">
+        </form>
+        <button type="button" class="btn btn-primary" onclick="$.post('/api/children/add.php', $('#childinfo').serializeArray() ,function (data){
+            document.getElementById('childnewid') .innerHTML=data;
+        }); return false;">Добавить ребенка в БД</button>
+        <span class="badge badge-secondary" style="font-size: large; width: 900px;">Результат вывода</span>
+        <textarea class="row" id="childnewid" style="width:900px; height: 200px;">
+        </textarea>
+
+    </div>
+<script>
+    $(function() {
+        $('#birthday_input').daterangepicker({
+            singleDatePicker: true,
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        });
+    })
+</script>
 </body>
 </html>
