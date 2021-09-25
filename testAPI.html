@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница тестирования API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container" style="background: aliceblue; padding: 30px; margin: 30px;">
+        <span class="badge badge-primary" style="font-size: xx-large">Получение списка мероприятий</span>
+        <p>
+            URL метода API:
+            <a href="http://f0578562.xsph.ru/api/event/getList.php">
+                http://f0578562.xsph.ru/api/event/getList.php
+            </a>
+        </p>
+        <p>
+            Данный метод возвращет массив мероприятий в формате JSON
+        </p>
+        <p>
+            Поля JSON:
+            <ul>
+        <li>
+            name - Название мероприятия
+        </li>
+        <li>
+            description - Описание мероприятия
+        </li>
+        <li>
+            address - Адрес мероприятия
+        </li>
+        <li>
+            photo_url - URL фото мероприятия
+        </li>
+        <li>
+            subject - Тег предметной области мероприятия. Например, футбол, музыка...
+        </li>
+        <li>
+            level - Тег уровня вхождения в предметную область. Например, смотреть, читать, выступать, тренироваться...
+        </li>
+    </ul>
+        </p>
+
+
+        <button type="button" class="btn btn-primary" onclick="$.get('/api/event/getList.php', function (data){
+            document.getElementById('allevents') .innerHTML=data;
+        }); return false;">Получить список мероприятий</button>
+        <span class="badge badge-secondary" style="font-size: large; width: 900px;">Результат вывода</span>
+        <textarea class="row" id="allevents" style="width:900px; height: 200px;">
+        </textarea>
+
+    </div>
+</body>
+</html>
