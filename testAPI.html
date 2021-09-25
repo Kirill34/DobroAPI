@@ -52,5 +52,53 @@
         </textarea>
 
     </div>
+
+
+    <div class="container" style="background: aliceblue; padding: 30px; margin: 30px;">
+        <span class="badge badge-primary" style="font-size: xx-large">Получение мероприятия по ID</span>
+        <p>
+            URL метода API:
+            <a href="http://f0578562.xsph.ru/api/event/get.php?id=15">
+                http://f0578562.xsph.ru/api/event/get.php?id=15
+            </a>
+        </p>
+        <p>
+            Данный метод возвращет мероприятие в формате JSON
+        </p>
+        <p>
+            Поля JSON:
+        <ul>
+            <li>
+                name - Название мероприятия
+            </li>
+            <li>
+                description - Описание мероприятия
+            </li>
+            <li>
+                address - Адрес мероприятия
+            </li>
+            <li>
+                photo_url - URL фото мероприятия
+            </li>
+            <li>
+                subject - Тег предметной области мероприятия. Например, футбол, музыка...
+            </li>
+            <li>
+                level - Тег уровня вхождения в предметную область. Например, смотреть, читать, выступать, тренироваться...
+            </li>
+        </ul>
+        </p>
+
+        <form method="post" id="eventid">
+            ID мероприятия: <input id="inputidevent" name="id" type="number" min="2" max="48" value="3">
+        </form>
+        <button type="button" class="btn btn-primary" onclick="$.get('/api/event/get.php', 'id='+document.getElementById('inputidevent').value ,function (data){
+            document.getElementById('eventbyid') .innerHTML=data;
+        }); return false;">Получить описание мероприятия</button>
+        <span class="badge badge-secondary" style="font-size: large; width: 900px;">Результат вывода</span>
+        <textarea class="row" id="eventbyid" style="width:900px; height: 200px;">
+        </textarea>
+
+    </div>
 </body>
 </html>
