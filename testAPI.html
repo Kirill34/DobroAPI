@@ -196,6 +196,46 @@
         </textarea>
 
     </div>
+
+    <div class="container" style="background: aliceblue; padding: 30px; margin: 30px;">
+        <span class="badge badge-primary" style="font-size: xx-large">Получение списка детей, достигших уровня "Применение"</span>
+        <p>
+            URL метода API:
+            <a href="http://f0578562.xsph.ru/api/childhouse/getApplyLevelChilds.php">
+                http://f0578562.xsph.ru/api/childhouse/getApplyLevelChilds.php
+            </a>
+        </p>
+        <p>
+            Данный метод возвращет массив детей в формате JSON
+        </p>
+        <p>
+            Поля JSON:
+        <ul>
+        <li>
+            name - Имя
+        </li>
+        <li>
+            secondname - Фамилия
+        </li>
+        <li>
+            patronic - Отчество
+        </li>
+        <li>
+            subject - Предметная область, где ребенок достиг уровня "Применение"
+        </li>
+        </ul>
+        </p>
+
+
+        <button type="button" class="btn btn-primary" onclick="$.get('/api/childhouse/getApplyLevelChilds.php', function (data){
+            document.getElementById('applychilds') .innerHTML=data;
+        }); return false;">Получить список детей</button>
+        <span class="badge badge-secondary" style="font-size: large; width: 900px;">Результат вывода</span>
+        <textarea class="row" id="applychilds" style="width:900px; height: 200px;">
+        </textarea>
+
+    </div>
+
 <script>
     $(function() {
         $('#birthday_input').daterangepicker({
