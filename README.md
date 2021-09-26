@@ -14,3 +14,5 @@ api/children/get.php?id=2
 
 Пример запроса: http://f0578562.xsph.ru/api/event/getList.php?id=1
 Получение мероприятий для ребенка с ID=1
+
+В файле f0578562_dd.sql находится код базы данных
